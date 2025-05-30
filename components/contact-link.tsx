@@ -66,12 +66,12 @@ const Contact = () => {
           <ContactCopyItem title="Email" copy="sarthakj.study.cs@gmail.com" />
         </ContactItem>
         <ContactItem icon={<ArrowUpRight />}>
-          <a href="https://www.linkedin.com/in/sarthak-jain-32b114228/" target="_blank">
+          <a href="https://www.linkedin.com/in/srthkdev/" target="_blank">
             Linkedin
           </a>
         </ContactItem>
         <ContactItem icon={<ArrowUpRight />}>
-          <a href="https://x.com/sarthxk20" target="_blank">
+          <a href="https://x.com/srthkdev" target="_blank">
             Twitter
           </a>
         </ContactItem>
@@ -81,7 +81,7 @@ const Contact = () => {
           </a>
         </ContactItem>
         <ContactItem icon={<Copy />}>
-          <ContactCopyItem title="Discord" copy="@sarthxk20" />
+          <ContactCopyItem title="Discord" copy="@srthkdev" />
         </ContactItem>
         {/*
         <ContactItem icon={<ArrowUpRight />}>

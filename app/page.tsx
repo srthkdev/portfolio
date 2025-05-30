@@ -166,6 +166,42 @@ const Projects = () => {
         <li>
           <p>
             <LinkPrimitive
+              href="https://rem-jet.vercel.app/"
+              external
+            >
+              REM:
+            </LinkPrimitive>{" "}
+            Research made accessible, research papers to simple summaries, podcasts, visualizations, and more.
+          </p>
+          <div className="flex items-center mt-3 gap-x-4">
+            <a
+              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
+              href="https://rem-jet.vercel.app/"
+              target="_blank"
+            >
+              Live{" "}
+              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
+                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
+              </span>
+            </a>
+            <a
+              href="https://github.com/srthkdev/rem"
+              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
+            >
+              Code{" "}
+              <span
+                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
+                aria-hidden={true}
+              >
+                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
+              </span>
+            </a>
+          </div>
+        </li>
+
+        <li>
+          <p>
+            <LinkPrimitive
               href="https://vibely-rooms.vercel.app/"
               external
             >
