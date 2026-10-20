@@ -331,10 +331,12 @@ const Skills = () => {
 };
 
 const Currently = async () => {
-  const { data: song } = await getLastPlayed();
+  const song = await getLastPlayed()
+    .then((res) => res.data)
+    .catch(() => undefined);
   const filter = new Filter();
 
-  const recent = song.is_playing ? song.item : song.items[0].track;
+  const recent = song?.is_playing ? song.item : song?.items?.[0]?.track;
 
   if (!recent) return (
     <>
