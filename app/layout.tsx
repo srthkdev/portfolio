@@ -20,22 +20,23 @@ const titillium = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.srthk.me"),
   title: {
     template: "%s / sarthak",
     default: "sarthak",
   },
-  description: "Web Developer, AI Engineer.",
+  description: "Founding AI Engineer at Sidecar.",
   openGraph: {
     title: "Sarthak Jain",
-    description: "Web Developer, AI Engineer.",
+    description: "Founding AI Engineer at Sidecar.",
     images: "/og.png",
-    url: "https://sarthak-wiz.vercel.app/",
+    url: "https://www.srthk.me/",
   },
   alternates: {
-    canonical: "https://sarthak-wiz.vercel.app/",
+    canonical: "https://www.srthk.me/",
   },
   twitter: {
-    site: "@sarthxk20",
+    site: "@srthkdev",
     card: "summary_large_image",
   },
 };

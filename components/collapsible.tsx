@@ -32,7 +32,7 @@ const AccordionItem = ({
       <AccordionPrimitive.Trigger
         className="py-1 grid px-2 focus-visible:bg-accent focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-transparent focus-visible:ring-accent/20 focus-visible:text-gray-12 hover:bg-accent hover:text-gray-12 rounded-sm w-full justify-items-start items-center group data-[state=open]:bg-accent/10 data-[state=open]:text-accent data-[state=open]:border data-[state=open]:border-accent whitespace-nowrap"
         style={{ 
-          gridTemplateColumns: isSkillSection ? "min-content 1fr" : "min-content 125px 1fr min-content" 
+          gridTemplateColumns: isSkillSection ? "min-content 1fr" : "min-content 160px 1fr min-content" 
         }}
         onClick={play}
       >
@@ -58,13 +58,13 @@ const AccordionItem = ({
       <AccordionPrimitive.Content className="overflow-hidden transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
         <div className="flex flex-col px-2 py-3 gap-y-2">
           {description && <p>{description}</p>}
-          <div className={isSkillSection ? "flex flex-wrap gap-2" : "flex gap-x-1.5"}>
+          <div className={isSkillSection ? "flex flex-wrap gap-2" : "flex flex-wrap gap-1.5"}>
             {skills?.map((skill) => {
               return (
                 <div
                   className={isSkillSection 
                     ? "px-2 py-1 rounded-sm text-accent text-sm border border-gray-12 hover:border-accent hover:bg-accent/10 transition-colors"
-                    : "rounded-sm text-gray-10 text-sm py-0.5"}
+                    : "px-1.5 py-0.5 rounded-sm text-xs text-gray-10 border border-gray-12"}
                   key={skill}
                 >
                   {skill}

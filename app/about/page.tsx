@@ -10,7 +10,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About",
   alternates: {
-    canonical: "https://1λ.com/about",
+    canonical: "https://www.srthk.me/about",
   },
 };
 
@@ -43,19 +43,18 @@ export default function About() {
         <Section heading="About Me">
           <div className="space-y-4">
             <p>
-              20-year-old developer focused on building{" "}
-              <LinkPrimitive href="https://fluxai-agents.vercel.app/" external>
-                agents
-              </LinkPrimitive>{" "}
-              and web software to solve complex problems. Data science undergrad, hackathon enthusiast — secured runner-up in the{" "}
-              <LinkPrimitive href="/blogs/mindmap" external={false}>
-                Hypermode x Hashnode
-              </LinkPrimitive>{" "}
-              Hackathon with{" "}
+              21-year-old AI engineer, founding AI engineer at Sidecar. I build the
+              harness around models and the reranking, classification and extraction
+              systems behind it. Data science undergrad and hackathon regular: won $2k
+              at Modus x Hashnode with{" "}
               <LinkPrimitive href="https://mindmapai-modus.vercel.app/" external>
                 Mindmap AI
               </LinkPrimitive>{" "}
-              , winning $2k. Into fitness and music, always exploring new technologies.
+              and $1k at the Agno agents hackathon with{" "}
+              <LinkPrimitive href="https://fluxai-agents.vercel.app/" external>
+                Flux
+              </LinkPrimitive>
+              . Into fitness and music, always exploring new technologies.
             </p>
           </div>
         </Section>
