@@ -10,7 +10,7 @@ import Contact, {
   ContactCopyItem,
   ContactItem,
 } from "@/components/contact-link";
-import { experiences, hackathons, photos, projects, skills } from "@/content";
+import { experiences, hackathons, openSource, photos, projects, skills, type Project } from "@/content";
 import LinkPrimitive from "@/components/link-primitive";
 import getLastPlayed from "@/lib/spotify";
 import Filter from "bad-words";
@@ -20,15 +20,11 @@ import Skeleton from "@/components/skeleton";
 
 export const dynamic = "force-dynamic";
 
-const Blogs = () => {
+const GallerySection = () => {
   return (
     <>
-      <Section heading="Blogs" className="shrink-0">
-        <div className="flex flex-col gap-y-1.5">
-          <p>
-          I write blogs about my projects, coding journey, and tech insights.
-          </p>
-        </div>
+      <Section heading="Gallery" className="shrink-0">
+        <p>Things I keep coming back to.</p>
       </Section>
       <Gallery photos={photos} />
     </>
@@ -87,25 +83,53 @@ const Experience = () => {
   );
 };
 
-type Project = (typeof projects)[number];
+const Tags = ({ items }: { items: string[] }) => (
+  <div className="flex flex-wrap gap-1.5 mt-2.5">
+    {items.map((item) => (
+      <span
+        key={item}
+        className="px-1.5 py-0.5 rounded-sm text-xs text-gray-10 border border-gray-12"
+      >
+        {item}
+      </span>
+    ))}
+  </div>
+);
 
-const ProjectList = ({ items }: { items: readonly Project[] }) => {
+const ProjectList = ({ items }: { items: Project[] }) => {
   return (
-    <ul className="flex flex-col gap-y-6">
+    <ul className="flex flex-col gap-y-7">
       {items.map((project) => (
         <li key={project.name}>
-          <p>
+          <div className="flex items-center gap-x-2">
             <LinkPrimitive href={project.links[0].href} external>
               {project.name}
-            </LinkPrimitive>{" "}
-            · {project.description}
-          </p>
-          <p className="mt-1 text-sm text-gray-10">{project.tech.join(" · ")}</p>
+            </LinkPrimitive>
+            {project.highlight && (
+              <span className="px-1.5 rounded-sm text-xs text-accent bg-accent/10 border border-accent/30">
+                {project.highlight}
+              </span>
+            )}
+          </div>
+          <p className="mt-1.5">{project.description}</p>
+          {project.points.length > 0 && (
+            <ul className="mt-2 flex flex-col gap-y-1 text-gray-10">
+              {project.points.map((point) => (
+                <li key={point} className="flex gap-x-2">
+                  <span className="text-accent" aria-hidden={true}>
+                    –
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <Tags items={project.tech} />
           <div className="flex items-center mt-3 gap-x-4">
             {project.links.map((link) => (
               <a
                 key={link.label}
-                className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
+                className="flex gap-x-1.5 items-center text-gray-10 hover:text-gray-12 transition-colors cursor-pointer text-sm"
                 href={link.href}
                 target="_blank"
               >
@@ -122,6 +146,37 @@ const ProjectList = ({ items }: { items: readonly Project[] }) => {
         </li>
       ))}
     </ul>
+  );
+};
+
+const OpenSource = () => {
+  return (
+    <Section heading="Open Source">
+      <ul className="flex flex-col gap-y-4">
+        {openSource.map((item) => (
+          <li key={item.repo}>
+            <p>
+              <LinkPrimitive href={item.href} external>
+                {item.repo}
+              </LinkPrimitive>{" "}
+              · {item.note}
+            </p>
+            <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1.5 text-sm">
+              {item.prs.map((pr) => (
+                <a
+                  key={pr.href}
+                  href={pr.href}
+                  target="_blank"
+                  className="text-gray-10 hover:text-accent transition-colors"
+                >
+                  {pr.label} ↗
+                </a>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 };
 
@@ -235,9 +290,10 @@ export default function Home() {
         <Contact />
         <Experience />
         <Projects />
+        <OpenSource />
         <Hackathons />
         <Skills />
-        <Blogs />
+        <GallerySection />
         <Footer />
       </div>
     </div>

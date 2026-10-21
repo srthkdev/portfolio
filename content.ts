@@ -4,7 +4,7 @@ export const experiences = [
     role: "Founding AI Engineer",
     range: "Current",
     description:
-      "Own the AI harness end to end: context, tools, retries, guardrails and evals. Build the reranking, classification and extraction pipelines that run in production.",
+      "Own the AI harness end to end: what goes into the model's context, which tools it can call, when it retries, the guardrails around it, and the evals that tell us a change actually helped. Build the reranking, classification and extraction pipelines that run in production.",
     skills: ["AI Harnesses", "Evals", "Reranking", "Classification", "Extraction", "Python"],
   },
   {
@@ -12,7 +12,7 @@ export const experiences = [
     role: "Open Source",
     range: "2025",
     description:
-      "Contributions to verifiers, their library for RL environments and evals, and a LegalBench environment for prime-environments, merged through their bounty program.",
+      "Contributed to verifiers, their library for RL environments and evals: a math rubric, judge error handling, evaluation logging and fixes across environment loading and datasets. Built a LegalBench environment for prime-environments, merged through their bounty program.",
     skills: ["RL Environments", "Evals", "Python"],
   },
   {
@@ -25,12 +25,27 @@ export const experiences = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  name: string;
+  highlight?: string;
+  description: string;
+  points: string[];
+  tech: string[];
+  links: { label: string; href: string }[];
+};
+
+export const projects: Project[] = [
   {
     name: "omnisql-mcp",
+    highlight: "88 stars",
     description:
-      "MCP server that gives Claude Code, Codex and OpenCode access to your databases: Postgres, MySQL, SQLite, SQL Server, Oracle, DuckDB and ClickHouse. 88 stars on GitHub.",
-    tech: ["TypeScript", "MCP"],
+      "MCP server that gives Claude Code, Codex and OpenCode access to the databases you already use.",
+    points: [
+      "Postgres, MySQL, SQLite, SQL Server, Oracle, DuckDB and ClickHouse through native drivers, plus Postgres-compatible engines like Neon, Supabase and CockroachDB.",
+      "Reuses saved DBeaver connections, including SSH settings, so agents query with credentials you already manage.",
+      "Read-only mode, connection allowlists and per-tool disabling, enforced in the server. One command sets up each client.",
+    ],
+    tech: ["TypeScript", "MCP", "Node DB drivers"],
     links: [
       { label: "Code", href: "https://github.com/srthkdev/omnisql-mcp" },
       { label: "npm", href: "https://www.npmjs.com/package/omnisql-mcp" },
@@ -39,22 +54,33 @@ export const projects = [
   {
     name: "qddot",
     description:
-      "Playwright for robot code. Coding agents run their controllers in MuJoCo, check them against signal temporal logic specs and debug failures before calling a task done.",
+      "Playwright for robot code: a local physics loop that lets coding agents run, check and debug controllers before claiming a task is done.",
+    points: [
+      "Tasks carry measurable specs as signal temporal logic, with a signed robustness margin and the exact time window that failed.",
+      "Records signals and contact events, explains likely causes, and fuzzes runs with seeded perturbations.",
+      "On an ALOHA bimanual handover, the same agent passed 3/3 seeds with qddot and 0/3 without it.",
+    ],
     tech: ["Python", "MuJoCo", "MCP", "DuckDB"],
     links: [{ label: "Code", href: "https://github.com/srthkdev/qddot" }],
   },
 ];
 
-export const hackathons = [
+export const hackathons: Project[] = [
   {
     name: "SynergySphere",
-    description: "Project management suite with an AI agent. Winner, IITM x Odoo hackathon.",
+    highlight: "Winner",
+    description: "Project management suite with an AI agent. IITM x Odoo hackathon.",
+    points: [
+      "Projects, tasks and team chat, with an AI assistant that answers questions about your workspace through a text-to-SQL tool.",
+    ],
     tech: ["Next.js", "LangGraph", "OpenAI", "Drizzle", "Neon Postgres"],
     links: [{ label: "Code", href: "https://github.com/srthkdev/SynergySphere" }],
   },
   {
     name: "Mindmap AI",
-    description: "AI mind mapping app. Won $2,000 at Modus x Hashnode.",
+    highlight: "$2,000",
+    description: "Turns complex problems into mind maps you can explore. Modus x Hashnode hackathon.",
+    points: [],
     tech: ["Next.js", "Modus"],
     links: [
       { label: "Live", href: "https://mindmapai-modus.vercel.app/" },
@@ -63,12 +89,40 @@ export const hackathons = [
   },
   {
     name: "Flux",
-    description:
-      "AI-native form builder with agents, multi-step tool use and memory. Won $1,000 at the Agno agents hackathon.",
+    highlight: "$1,000",
+    description: "AI-native form builder. Agno agents hackathon.",
+    points: [
+      "Describe a form and agents build it, wire the logic and connect responses to insights, using multi-step tool use and memory.",
+    ],
     tech: ["Next.js", "Agno", "Gemini", "Postgres"],
     links: [
       { label: "Live", href: "https://fluxai-agents.vercel.app/" },
       { label: "Code", href: "https://github.com/srthkdev/flux" },
+    ],
+  },
+];
+
+const VF = "https://github.com/PrimeIntellect-ai/verifiers";
+
+export const openSource = [
+  {
+    repo: "verifiers",
+    href: VF,
+    note: "Prime Intellect's library for RL environments and evals.",
+    prs: [
+      { label: "math rubric", href: `${VF}/pull/263` },
+      { label: "judge error handling", href: `${VF}/pull/291` },
+      { label: "eval logging", href: `${VF}/pull/262` },
+      { label: "TUI markup escaping", href: `${VF}/pull/273` },
+      { label: "all merged PRs", href: `${VF}/pulls?q=is%3Apr+author%3Asrthkdev+is%3Amerged` },
+    ],
+  },
+  {
+    repo: "prime-environments",
+    href: "https://github.com/PrimeIntellect-ai/prime-environments",
+    note: "A LegalBench environment, merged through their bounty program.",
+    prs: [
+      { label: "legalbench env", href: "https://github.com/PrimeIntellect-ai/prime-environments/pull/180" },
     ],
   },
 ];

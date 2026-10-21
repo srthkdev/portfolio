@@ -10,7 +10,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About",
   alternates: {
-    canonical: "https://1λ.com/about",
+    canonical: "https://www.srthk.me/about",
   },
 };
 
