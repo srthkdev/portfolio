@@ -10,7 +10,7 @@ import Contact, {
   ContactCopyItem,
   ContactItem,
 } from "@/components/contact-link";
-import { experiences, photos, skills } from "@/content";
+import { experiences, hackathons, photos, projects, skills } from "@/content";
 import LinkPrimitive from "@/components/link-primitive";
 import getLastPlayed from "@/lib/spotify";
 import Filter from "bad-words";
@@ -43,11 +43,11 @@ const Items = () => {
         Sarthak Jain
       </h1>
       <p className="mt-1 text-gray-9">
-        Software Engineer, Web Development, AI.
+        Founding AI Engineer at Sidecar.
       </p>
       <div className="flex flex-col mt-4 gap-y-2">
         <p>
-        I like building simple software to solve complex problems — from modern, responsive websites to feature-packed AI agents. My <LinkPrimitive
+        I build AI systems: harnesses, evals, and the reranking, classification and extraction work behind them. My <LinkPrimitive
             href="https://twitter.com/messages/compose?recipient_id=1398882176242884608"
             external
           >DM's</LinkPrimitive> are open.
@@ -87,224 +87,56 @@ const Experience = () => {
   );
 };
 
+type Project = (typeof projects)[number];
+
+const ProjectList = ({ items }: { items: readonly Project[] }) => {
+  return (
+    <ul className="flex flex-col gap-y-6">
+      {items.map((project) => (
+        <li key={project.name}>
+          <p>
+            <LinkPrimitive href={project.links[0].href} external>
+              {project.name}
+            </LinkPrimitive>{" "}
+            · {project.description}
+          </p>
+          <p className="mt-1 text-sm text-gray-10">{project.tech.join(" · ")}</p>
+          <div className="flex items-center mt-3 gap-x-4">
+            {project.links.map((link) => (
+              <a
+                key={link.label}
+                className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
+                href={link.href}
+                target="_blank"
+              >
+                {link.label}{" "}
+                <span
+                  className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
+                  aria-hidden={true}
+                >
+                  <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const Projects = () => {
   return (
     <Section heading="Projects">
-      <ul className="flex flex-col gap-y-6">
-      <li>
-          <p>
-            <LinkPrimitive
-              href="https://mindmapai-modus.vercel.app/"
-              external
-            >
-              Mindmap AI
-            </LinkPrimitive>{" "}
-            is a platform to visualize complex problems into simple mindmaps using AI.
-          </p>
-          <div className="flex items-center mt-3 gap-x-4">
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://mindmapai-modus.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              href="https://github.com/srthkdev/mindmap-frontend"
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
+      <ProjectList items={projects} />
+    </Section>
+  );
+};
 
-        <li>
-          <p>
-            <LinkPrimitive
-              href="https://fluxai-agents.vercel.app/"
-              external
-            >
-              Flux:
-            </LinkPrimitive>{" "}
-            Superintelligent Form Builder with Agents and Memory
-          </p>
-          <div className="flex items-center mt-3 gap-x-4">
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://fluxai-agents.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              href="https://github.com/srthkdev/flux"
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <p>
-            <LinkPrimitive
-              href="https://rem-jet.vercel.app/"
-              external
-            >
-              REM:
-            </LinkPrimitive>{" "}
-            Research made accessible, research papers to simple summaries, podcasts, visualizations, and more.
-          </p>
-          <div className="flex items-center mt-3 gap-x-4">
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://rem-jet.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              href="https://github.com/srthkdev/rem"
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <p>
-            <LinkPrimitive
-              href="https://vibely-rooms.vercel.app/"
-              external
-            >
-              Vibely
-            </LinkPrimitive>{" "}
-            offers real-time video chat rooms in a bold neo-brutalist design, powered by Socket.io, WebRTC, and Next.js.
-          </p>
-          <div className="flex items-center mt-3 gap-x-4">
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://vibely-rooms.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              href="https://github.com/srthkdev/vibely"
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <p>
-            <LinkPrimitive
-              href="https://sarthak-wiz.vercel.app/"
-              external
-            >
-              Portfolio
-            </LinkPrimitive>{" "}
-            - website showcasing my projects, skills, and achievements, built with Next.js, TypeScript, and Tailwind CSS for a modern, responsive, and accessible experience.
-          </p>
-          <div className="flex items-center mt-3 gap-x-4">
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://sarthak-wiz.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              href="https://github.com/srthkdev/portfolio"
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
-
-        <li>
-          <p>
-            <LinkPrimitive href="https://nav-durga-quiz.vercel.app/" external>
-              Nav-Durga Quiz
-            </LinkPrimitive>{" "}
-            is simple quiz app made with vite-react.js and tailwind.css
-          </p>
-          <div className="flex items-center mt-2 gap-x-4">
-          <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://nav-durga-quiz.vercel.app/"
-              target="_blank"
-            >
-              Live{" "}
-              <span className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm">
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-            <a
-              className="flex gap-x-1.5 items-center text-gray-10 cursor-pointer text-sm"
-              href="https://github.com/srthkdev/nav-durga-quiz"
-              target="_blank"
-            >
-              Code{" "}
-              <span
-                className="w-3.5 h-3.5 p-0.5 bg-accent flex items-center justify-center rounded-sm"
-                aria-hidden={true}
-              >
-                <ArrowUpRight size={12} className="shrink-0 text-gray-12" />
-              </span>
-            </a>
-          </div>
-        </li>
-      </ul>
+const Hackathons = () => {
+  return (
+    <Section heading="Hackathons">
+      <ProjectList items={hackathons} />
     </Section>
   );
 };
@@ -403,6 +235,7 @@ export default function Home() {
         <Contact />
         <Experience />
         <Projects />
+        <Hackathons />
         <Skills />
         <Blogs />
         <Footer />

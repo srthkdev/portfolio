@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     template: "%s / sarthak",
     default: "sarthak",
   },
-  description: "Web Developer, AI Engineer.",
+  description: "Founding AI Engineer at Sidecar.",
   openGraph: {
     title: "Sarthak Jain",
-    description: "Web Developer, AI Engineer.",
+    description: "Founding AI Engineer at Sidecar.",
     images: "/og.png",
     url: "https://sarthak-wiz.vercel.app/",
   },
