@@ -63,7 +63,7 @@ const Contact = () => {
     <Section>
       <div className="flex flex-wrap mt-12 md:flex-col md:gap-y-0 gap-y-2 gap-x-6 md:mt-0">
         <ContactItem icon={<Copy />}>
-          <ContactCopyItem title="Email" copy="sarthakj.study.cs@gmail.com" />
+          <ContactCopyItem title="Email" copy="me@srthkdev.com" />
         </ContactItem>
         <ContactItem icon={<ArrowUpRight />}>
           <a href="https://www.linkedin.com/in/srthkdev/" target="_blank">

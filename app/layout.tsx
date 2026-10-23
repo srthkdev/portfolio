@@ -20,7 +20,7 @@ const titillium = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.srthk.me"),
+  metadataBase: new URL("https://srthkdev.com"),
   title: {
     template: "%s / sarthak",
     default: "sarthak",
@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     title: "Sarthak Jain",
     description: "Founding AI Engineer at Sidecar.",
     images: "/og.png",
-    url: "https://www.srthk.me/",
+    url: "https://srthkdev.com/",
   },
   alternates: {
-    canonical: "https://www.srthk.me/",
+    canonical: "https://srthkdev.com/",
   },
   twitter: {
     site: "@srthkdev",

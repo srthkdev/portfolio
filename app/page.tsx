@@ -54,7 +54,7 @@ const Items = () => {
             <ArrowRight size={12} aria-hidden={true} />
           </LinkPrimitive>
           <ContactItem icon={<Copy />} className="text-sm">
-            <ContactCopyItem title="Email me" copy="sarthakj.study.cs@gmail.com" />
+            <ContactCopyItem title="Email me" copy="me@srthkdev.com" />
           </ContactItem>
         </div>
       </div>
